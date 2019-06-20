@@ -1,4 +1,6 @@
-
+// Function to generate weather between -10 and 45 degrees celsius
+// If a privious value is given, generates another which differece doesn't 
+// go over 3 degrees (the idea is to simulate subtle temperature variation)
 
 function getWeather(previous)
 {
@@ -16,7 +18,6 @@ function getWeather(previous)
 
         return {'celsius': cel, 'farenheint': far}
     }
-
     
     let cel = min + (max-min)*x
     let far = (cel*9/5) + 32

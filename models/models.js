@@ -1,4 +1,5 @@
 
+// Gets weather from the database
 function getWeatherDb(db, city, cb)
 {
     db.collection('city').find({city: city},{projection:{_id: 0}}).limit(1).toArray(function(err, docs) {
@@ -17,6 +18,7 @@ function getWeatherDb(db, city, cb)
     });
 }
 
+// Sets the weather for a given city on the database
 function setWeatherDb(db, city, weather, cb)
 {
     //db.city.update({city: 'Thays'},{$set:{celsius: 13}}, {'upsert':true})
@@ -27,6 +29,8 @@ function setWeatherDb(db, city, weather, cb)
     });
 }
 
+
+// Gets weather from the Redis
 function getWeatherRedis(redisClient, city, cb)
 {
     redisClient.get(city, function(err, res)
@@ -39,6 +43,13 @@ function getWeatherRedis(redisClient, city, cb)
     });    
 }
 
+// Sets the weather for a given city on Redis, valid for 30 seconds
+function setWeatherRedis(redisClient, city, weather)
+{
+    redisClient.setex(city, 30, JSON.stringify(weather));
+}
+
 module.exports.getWeatherDb = getWeatherDb
 module.exports.setWeatherDb = setWeatherDb
 module.exports.getWeatherRedis = getWeatherRedis
+module.exports.setWeatherRedis = setWeatherRedis
