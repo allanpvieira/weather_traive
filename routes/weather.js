@@ -7,7 +7,7 @@ const redis = require('redis');
 //Expeting to connect to redis on port 6379
 const redisClient = redis.createClient({port: 6379});
 
-//Expeting to connect to redis on port 27017
+//Expeting to connect to Mongodb on port 27017
 const url = 'mongodb://0.0.0.0:27017';
 var db = null
 
@@ -20,6 +20,8 @@ redisClient.on('error', (err) => {
 // First looks it up on Redis and then on Mongo afterwards
 // Determines the current weather (from another function), if nothing returns
 routes.get('/weather/:city', function (req, res) {
+    console.log('http GET request', req.params);
+
     // Style city name
     var city = req.params.city.capitalize(); 
 
