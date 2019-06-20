@@ -1,0 +1,21 @@
+
+{
+    "name": "weather_traive",
+    "version": "0.1.0",
+    "description": "Awesome Data Analyst position code assessment",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.0",
+      "mongodb": "^3.2.7",
+      "redis": "^2.8.0"
+    },
+    "author": {
+      "name": "Allan Vieira",
+      "email": "allanpvieira@hotmail.com"
+    }
+      
+  }
+  
