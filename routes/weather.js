@@ -5,10 +5,10 @@ const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const redis = require('redis');
 //Expeting to connect to redis on port 6379
-const redisClient = redis.createClient({port: 6379});
+const redisClient = redis.createClient({host: 'redis', port: 6379});
 
 //Expeting to connect to Mongodb on port 27017
-const url = 'mongodb://0.0.0.0:27017';
+const url = 'mongodb://mongo:27017';
 var db = null
 
 // Preventing redis connection error from crashing the application
